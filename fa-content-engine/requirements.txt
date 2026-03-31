@@ -1,0 +1,8 @@
+# FA Content Engine — Python dependencies
+# pip install -r requirements.txt
+# playwright install chromium
+
+playwright>=1.43
+pillow>=10.0
+pytesseract>=0.3.10
+requests>=2.31

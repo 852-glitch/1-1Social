@@ -1,8 +1,49 @@
 # fa-content-engine
 
-> The Financial Architect — Social Content Studio
+> The Financial Architect — Automated Social Content Studio
 
-Lives inside `852-glitch/1-1Social`. Handles all post creation, GIF export, and brand asset management. The main site repo (`852-glitch/1-1`) stays untouched.
+Lives inside `852-glitch/1-1Social`. Converts a tweet URL or screenshot → branded MP4 / GIF / PNG in one command.
+
+---
+
+## One-command usage
+
+```bash
+# From a tweet URL
+python run.py --url https://x.com/user/status/123456789
+
+# From a screenshot
+python run.py --img ~/Desktop/screenshot.png
+
+# Choose output format
+python run.py --url https://x.com/... --fmt mp4
+python run.py --url https://x.com/... --fmt png
+
+# Override eyebrow or pull-quote
+python run.py --url https://x.com/... --eyebrow "Markets · Mar 2026" --quote "Your quote here"
+```
+
+Output lands in `exports/<slug>.[gif|mp4|png]`.
+
+---
+
+## Pipeline
+
+```
+[URL or screenshot]
+       │
+       ▼
+ pipeline/ingest.py   ← scrapes tweet text / OCR from image
+       │               writes  pipeline/queue/<slug>.json
+       ▼
+ pipeline/compose.py  ← injects content into branded HTML template
+       │               writes  posts/<slug>.html
+       ▼
+ pipeline/export.py   ← Playwright screenshots HTML
+       │               Pillow/ffmpeg renders GIF or MP4
+       ▼
+ exports/<slug>.[gif|mp4|png]   ← ready to post
+```
 
 ---
 
@@ -11,72 +52,64 @@ Lives inside `852-glitch/1-1Social`. Handles all post creation, GIF export, and 
 ```
 fa-content-engine/
 ├── brand/
-│   ├── brand.css        ← All design tokens (colors, fonts, spacing)
-│   └── nazar.svg        ← Evil eye mark — exact favicon.svg colors
+│   ├── brand.css          ← design tokens + utility classes
+│   └── nazar.svg          ← evil eye mark
 ├── templates/
-│   └── post-base.html   ← Card shell (inherit for every post)
-├── posts/
-│   └── 2026-03-worldcup.html
-├── exports/             ← GIFs and PNGs land here (gitignored)
-├── scripts/
-│   └── render.py        ← HTML → animated GIF via Pillow + Selenium
+│   └── post-base.html     ← reusable card shell
+├── pipeline/
+│   ├── ingest.py          ← URL scraper / OCR
+│   ├── compose.py         ← content → branded HTML
+│   ├── export.py          ← HTML → GIF / MP4 / PNG
+│   └── queue/             ← JSON queue (gitignored)
+├── posts/                 ← rendered HTML (per post)
+├── exports/               ← final files (gitignored)
+├── run.py                 ← single entry point
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## Brand Tokens (`brand/brand.css`)
+## Setup
 
-All CSS custom properties are locked to `brand_tokens.json`:
+```bash
+pip install -r requirements.txt
+playwright install chromium
 
-| Token | Value | Use |
+# For MP4 export (Ken-Burns animated):
+brew install ffmpeg       # macOS
+sudo apt install ffmpeg   # Linux
+
+# For screenshot OCR (--img mode):
+brew install tesseract    # macOS
+sudo apt install tesseract-ocr   # Linux
+```
+
+---
+
+## Brand tokens
+
+All visual rules live in `brand/brand.css` as CSS custom properties.
+Source of truth: `brand_tokens.json` in repo root.
+
+| Token | Value |
+|---|---|
+| `--fa-bg` | `#0d0b2b` |
+| `--fa-accent` | `#4f46e5` |
+| `--fa-accent-teal` | `#34d399` |
+| `--fa-font-headline` | Manrope 800 |
+| `--fa-font-body` | Inter |
+| `--fa-font-accent` | Fraunces italic |
+
+---
+
+## Export formats
+
+| Format | How | Notes |
 |---|---|---|
-| `--fa-bg` | `#0d0b2b` | Canvas background |
-| `--fa-accent` | `#4f46e5` | Indigo accent / logo |
-| `--fa-accent-teal` | `#34d399` | Headline em, stat values |
-| `--fa-accent-purple` | `#a78bfa` | Subtle highlights |
-| `--fa-font-headline` | Manrope 800 | Headlines |
-| `--fa-font-body` | Inter | Body / eyebrow |
-| `--fa-font-accent` | Fraunces italic | Quotes / em |
-| `--fa-nazar-deep` | `#1A1F71` | Nazar SVG outer |
-| `--fa-nazar-light` | `#89C4E1` | Nazar SVG mid ring |
-
----
-
-## Create a New Post
-
-1. Duplicate `posts/2026-03-worldcup.html`
-2. Rename: `posts/YYYY-MM-topic.html`
-3. Edit the `<!-- EDITABLE ZONE -->` section only
-4. Export:
-
-```bash
-python scripts/render.py --out exports/YYYY-MM-topic.gif
-```
-
----
-
-## Export Options
-
-```bash
-# Default (8 frames, 2s each)
-python scripts/render.py --out exports/my-post.gif
-
-# Custom frames + speed
-python scripts/render.py --out exports/my-post.gif --frames 6 --duration 1500
-
-# Static PNG
-python scripts/render.py --out exports/my-post.png --static
-```
-
----
-
-## Requirements
-
-```bash
-pip install pillow selenium
-# + ChromeDriver on PATH matching your Chrome version
-```
+| `gif` | Pillow animated | Fade-in, 10fps, 3s. Works everywhere. |
+| `mp4` | ffmpeg + Ken-Burns zoom | Smooth 30fps, ready for Reels/Stories |
+| `png` | Static screenshot | For feed posts or further editing |
 
 ---
 
@@ -84,6 +117,7 @@ pip install pillow selenium
 
 ```
 exports/
+pipeline/queue/*.json
 __pycache__/
 *.pyc
 .DS_Store
