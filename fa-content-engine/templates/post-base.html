@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FA Post — {{POST_TITLE}}</title>
+  <link rel="stylesheet" href="../brand/brand.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     FA POST CANVAS  —  800 × 800
+     Do not edit outside <!-- EDITABLE ZONE -->
+     ============================================================ -->
+<div class="fa-canvas">
+
+  <!-- Ambient orbs (decorative — do not touch) -->
+  <div class="fa-orb fa-orb--1"></div>
+  <div class="fa-orb fa-orb--2"></div>
+  <div class="fa-orb fa-orb--3"></div>
+
+  <!-- Top accent bar -->
+  <div class="fa-accent-bar"></div>
+
+  <!-- ==================== EDITABLE ZONE ==================== -->
+
+  <!-- Eyebrow tag: category / date / topic -->
+  <div class="fa-eyebrow">{{EYEBROW}}</div>
+
+  <!-- Main headline (wrap key words in <em> for teal italic accent) -->
+  <h1 class="fa-headline">{{HEADLINE}}</h1>
+
+  <!-- Body copy -->
+  <p class="fa-body">{{BODY}}</p>
+
+  <hr class="fa-divider" />
+
+  <!-- Pull quote -->
+  <blockquote class="fa-quote">{{QUOTE}}</blockquote>
+
+  <hr class="fa-divider" />
+
+  <!-- Stat cards — duplicate .fa-stat-card as needed -->
+  <div class="fa-stats">
+    <div class="fa-stat-card">
+      <div class="fa-stat-value">{{STAT_1_VALUE}}</div>
+      <div class="fa-stat-label">{{STAT_1_LABEL}}</div>
+    </div>
+    <div class="fa-stat-card">
+      <div class="fa-stat-value">{{STAT_2_VALUE}}</div>
+      <div class="fa-stat-label">{{STAT_2_LABEL}}</div>
+    </div>
+    <div class="fa-stat-card">
+      <div class="fa-stat-value">{{STAT_3_VALUE}}</div>
+      <div class="fa-stat-label">{{STAT_3_LABEL}}</div>
+    </div>
+  </div>
+
+  <!-- ==================== / EDITABLE ZONE =================== -->
+
+  <!-- Footer branding (do not touch) -->
+  <div style="position:absolute; bottom:var(--fa-padding); left:var(--fa-padding); right:var(--fa-padding); display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div class="fa-logo">FA</div>
+      <div>
+        <div style="font-family:var(--fa-font-headline); font-size:0.8rem; font-weight:700; color:var(--fa-text-primary);">The Financial Architect</div>
+        <div class="fa-tagline">No Hype. Just Discipline.</div>
+      </div>
+    </div>
+    <img src="../brand/nazar.svg" width="32" height="32" alt="FA mark" />
+  </div>
+
+</div>
+
+</body>
+</html>

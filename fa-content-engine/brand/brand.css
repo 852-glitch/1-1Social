@@ -1,0 +1,252 @@
+/* ============================================================
+   FA CONTENT ENGINE — Brand Style Inputs
+   Locked to brand_tokens.json + main site (852-glitch/1-1)
+   ============================================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,600&display=swap');
+
+/* ============================================================
+   1. COLOR TOKENS
+   ============================================================ */
+:root {
+  /* Background */
+  --fa-bg:                  #0d0b2b;
+  --fa-bg-gradient:         linear-gradient(135deg, #0d0b2b 0%, #16103d 40%, #1a0b2e 100%);
+
+  /* Aurora / Glow Orbs */
+  --fa-aurora-1:            #4338ca;
+  --fa-aurora-2:            #7c3aed;
+  --fa-aurora-3:            #be185d;
+
+  /* Accent */
+  --fa-accent:              #4f46e5;
+  --fa-accent-purple:       #a78bfa;
+  --fa-accent-teal:         #34d399;
+  --fa-accent-teal-light:   #6ee7b7;
+
+  /* Text */
+  --fa-text-primary:        #f9fafb;
+  --fa-text-secondary:      #e5e7eb;
+  --fa-text-muted:          #94a3b8;
+  --fa-text-highlight:      #cbd5f5;
+
+  /* Cards & UI Surfaces */
+  --fa-card-bg:             rgba(15, 23, 42, 0.75);
+  --fa-card-border:         rgba(148, 163, 184, 0.35);
+  --fa-eyebrow-bg:          rgba(15, 23, 42, 0.6);
+  --fa-eyebrow-border:      rgba(148, 163, 184, 0.5);
+  --fa-stat-card-bg:        rgba(15, 23, 42, 0.5);
+  --fa-stat-card-border:    rgba(148, 163, 184, 0.25);
+  --fa-quote-bar:           rgba(148, 163, 184, 0.4);
+  --fa-divider:             rgba(148, 163, 184, 0.25);
+
+  /* Logo */
+  --fa-logo-bg:             #4f46e5;
+  --fa-logo-text:           #ffffff;
+
+  /* Nazar mark (favicon palette) */
+  --fa-nazar-deep:          #1A1F71;
+  --fa-nazar-light:         #89C4E1;
+
+  /* ============================================================
+     2. TYPOGRAPHY TOKENS
+     ============================================================ */
+
+  /* Font families */
+  --fa-font-headline:       'Manrope', sans-serif;
+  --fa-font-body:           'Inter', system-ui, sans-serif;
+  --fa-font-accent:         'Fraunces', serif;
+
+  /* Eyebrow */
+  --fa-eyebrow-size:        0.72rem;
+  --fa-eyebrow-spacing:     0.12em;
+  --fa-eyebrow-weight:      600;
+
+  /* Headline */
+  --fa-headline-size:       2.6rem;
+  --fa-headline-lh:         1.05;
+  --fa-headline-spacing:    -0.03em;
+  --fa-headline-weight:     800;
+
+  /* Body */
+  --fa-body-size:           0.96rem;
+  --fa-body-lh:             1.6;
+
+  /* Stats */
+  --fa-stat-value-size:     1.4rem;
+  --fa-stat-value-weight:   700;
+  --fa-stat-label-size:     0.68rem;
+  --fa-stat-label-spacing:  0.12em;
+
+  /* Tagline */
+  --fa-tagline-size:        0.75rem;
+  --fa-tagline-weight:      700;
+  --fa-tagline-spacing:     0.12em;
+  --fa-tagline-color:       #34d399;
+
+  /* ============================================================
+     3. SPACING & LAYOUT TOKENS
+     ============================================================ */
+
+  --fa-canvas-size:         800px;
+  --fa-padding:             48px;
+  --fa-card-radius:         12px;
+  --fa-eyebrow-radius:      999px;
+  --fa-stat-card-radius:    10px;
+  --fa-logo-radius:         10px;
+
+  /* Top accent bar */
+  --fa-accent-bar-color:    #4338ca;
+  --fa-accent-bar-w:        36px;
+  --fa-accent-bar-h:        3px;
+  --fa-accent-bar-radius:   2px;
+}
+
+/* ============================================================
+   4. UTILITY CLASSES  (use in post HTML directly)
+   ============================================================ */
+
+/* Canvas wrapper */
+.fa-canvas {
+  width:            var(--fa-canvas-size);
+  height:           var(--fa-canvas-size);
+  padding:          var(--fa-padding);
+  background:       var(--fa-bg-gradient);
+  font-family:      var(--fa-font-body);
+  color:            var(--fa-text-primary);
+  position:         relative;
+  overflow:         hidden;
+  box-sizing:       border-box;
+}
+
+/* Aurora orb */
+.fa-orb {
+  position:         absolute;
+  border-radius:    50%;
+  filter:           blur(80px);
+  pointer-events:   none;
+}
+.fa-orb--1 { width:260px; height:260px; background:var(--fa-aurora-1); opacity:.35; top:-60px; right:-60px; }
+.fa-orb--2 { width:220px; height:220px; background:var(--fa-aurora-2); opacity:.28; bottom:-40px; left:-40px; }
+.fa-orb--3 { width:190px; height:190px; background:var(--fa-aurora-3); opacity:.18; top:50%; left:50%; transform:translate(-50%,-50%); }
+
+/* Top accent bar */
+.fa-accent-bar {
+  width:            var(--fa-accent-bar-w);
+  height:           var(--fa-accent-bar-h);
+  background:       var(--fa-accent-bar-color);
+  border-radius:    var(--fa-accent-bar-radius);
+  margin-bottom:    20px;
+}
+
+/* Eyebrow tag */
+.fa-eyebrow {
+  display:          inline-block;
+  font-family:      var(--fa-font-body);
+  font-size:        var(--fa-eyebrow-size);
+  font-weight:      var(--fa-eyebrow-weight);
+  letter-spacing:   var(--fa-eyebrow-spacing);
+  text-transform:   uppercase;
+  color:            var(--fa-text-muted);
+  background:       var(--fa-eyebrow-bg);
+  border:           1px solid var(--fa-eyebrow-border);
+  border-radius:    var(--fa-eyebrow-radius);
+  padding:          4px 12px;
+  margin-bottom:    16px;
+}
+
+/* Headline */
+.fa-headline {
+  font-family:      var(--fa-font-headline);
+  font-size:        var(--fa-headline-size);
+  font-weight:      var(--fa-headline-weight);
+  line-height:      var(--fa-headline-lh);
+  letter-spacing:   var(--fa-headline-spacing);
+  color:            var(--fa-text-primary);
+  margin:           0 0 16px;
+}
+.fa-headline em {
+  font-family:      var(--fa-font-accent);
+  font-style:       italic;
+  color:            var(--fa-accent-teal);
+}
+
+/* Body text */
+.fa-body {
+  font-family:      var(--fa-font-body);
+  font-size:        var(--fa-body-size);
+  line-height:      var(--fa-body-lh);
+  color:            var(--fa-text-secondary);
+  margin-bottom:    20px;
+}
+
+/* Divider */
+.fa-divider {
+  border:           none;
+  border-top:       1px solid var(--fa-divider);
+  margin:           20px 0;
+}
+
+/* Quote block */
+.fa-quote {
+  border-left:      3px solid var(--fa-quote-bar);
+  padding-left:     16px;
+  font-family:      var(--fa-font-accent);
+  font-style:       italic;
+  font-size:        0.95rem;
+  color:            var(--fa-text-highlight);
+  margin:           0 0 20px;
+}
+
+/* Stat card row */
+.fa-stats {
+  display:          flex;
+  gap:              12px;
+}
+.fa-stat-card {
+  flex:             1;
+  background:       var(--fa-stat-card-bg);
+  border:           1px solid var(--fa-stat-card-border);
+  border-radius:    var(--fa-stat-card-radius);
+  padding:          14px 16px;
+}
+.fa-stat-value {
+  font-family:      var(--fa-font-headline);
+  font-size:        var(--fa-stat-value-size);
+  font-weight:      var(--fa-stat-value-weight);
+  color:            var(--fa-accent-teal);
+}
+.fa-stat-label {
+  font-family:      var(--fa-font-body);
+  font-size:        var(--fa-stat-label-size);
+  letter-spacing:   var(--fa-stat-label-spacing);
+  text-transform:   uppercase;
+  color:            var(--fa-text-muted);
+  margin-top:       4px;
+}
+
+/* Logo mark */
+.fa-logo {
+  width:            38px;
+  height:           38px;
+  background:       var(--fa-logo-bg);
+  color:            var(--fa-logo-text);
+  border-radius:    var(--fa-logo-radius);
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  font-family:      var(--fa-font-headline);
+  font-size:        0.9rem;
+  font-weight:      800;
+}
+
+/* Footer tagline */
+.fa-tagline {
+  font-family:      var(--fa-font-body);
+  font-size:        var(--fa-tagline-size);
+  font-weight:      var(--fa-tagline-weight);
+  letter-spacing:   var(--fa-tagline-spacing);
+  text-transform:   uppercase;
+  color:            var(--fa-tagline-color);
+}
