@@ -1,0 +1,110 @@
+{
+  "brand": "The Financial Architect",
+  "tagline": "NO HYPE. JUST DISCIPLINE.",
+  "logo": {
+    "initials": "FA",
+    "bg": "#4f46e5",
+    "text": "#ffffff",
+    "borderRadius": "10px"
+  },
+  "colors": {
+    "bg": "#0d0b2b",
+    "bgGradient": "linear-gradient(135deg, #0d0b2b 0%, #16103d 40%, #1a0b2e 100%)",
+    "aurora1": "#4338ca",
+    "aurora2": "#7c3aed",
+    "aurora3": "#be185d",
+    "accent": "#4f46e5",
+    "accentPurple": "#a78bfa",
+    "accentTeal": "#34d399",
+    "accentTealLight": "#6ee7b7",
+    "textPrimary": "#f9fafb",
+    "textSecondary": "#e5e7eb",
+    "textMuted": "#94a3b8",
+    "textHighlight": "#cbd5f5",
+    "cardBg": "rgba(15, 23, 42, 0.75)",
+    "cardBorder": "rgba(148, 163, 184, 0.35)",
+    "eyebrowBg": "rgba(15, 23, 42, 0.6)",
+    "eyebrowBorder": "rgba(148, 163, 184, 0.5)",
+    "statCardBg": "rgba(15, 23, 42, 0.5)",
+    "statCardBorder": "rgba(148, 163, 184, 0.25)",
+    "quoteBarColor": "rgba(148, 163, 184, 0.4)",
+    "divider": "rgba(148, 163, 184, 0.25)"
+  },
+  "fonts": {
+    "heading": "'Manrope', sans-serif",
+    "body": "'Inter', system-ui, sans-serif",
+    "accent": "'Fraunces', serif",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,600&display=swap"
+  },
+  "typography": {
+    "eyebrow": {
+      "fontSize": "0.72rem",
+      "letterSpacing": "0.12em",
+      "textTransform": "uppercase",
+      "fontWeight": "600",
+      "fontFamily": "Inter"
+    },
+    "headline": {
+      "fontSize": "2.6rem",
+      "lineHeight": "1.05",
+      "letterSpacing": "-0.03em",
+      "fontFamily": "Manrope",
+      "fontWeight": "800"
+    },
+    "headlineAccent": {
+      "color": "#34d399",
+      "fontStyle": "italic",
+      "fontFamily": "Fraunces"
+    },
+    "body": {
+      "fontSize": "0.96rem",
+      "lineHeight": "1.6",
+      "fontFamily": "Inter"
+    },
+    "quote": {
+      "fontFamily": "Fraunces",
+      "fontStyle": "italic",
+      "fontSize": "0.95rem"
+    },
+    "stat": {
+      "valueFontSize": "1.4rem",
+      "valueFontWeight": "700",
+      "labelFontSize": "0.68rem",
+      "labelLetterSpacing": "0.12em",
+      "labelTextTransform": "uppercase",
+      "fontFamily": "Manrope"
+    },
+    "tagline": {
+      "fontSize": "0.75rem",
+      "fontWeight": "700",
+      "letterSpacing": "0.12em",
+      "textTransform": "uppercase",
+      "color": "#34d399"
+    }
+  },
+  "spacing": {
+    "canvasSize": "800px",
+    "padding": "48px",
+    "cardRadius": "12px",
+    "eyebrowRadius": "999px",
+    "statCardRadius": "10px"
+  },
+  "postTypes": {
+    "text": "text-only post with headline + body + quote + stats",
+    "graph": "post with embedded chart/graph + headline + annotation",
+    "mixed": "headline + body + graph + stats"
+  },
+  "decorative": {
+    "topAccentLine": {
+      "color": "#4338ca",
+      "width": "36px",
+      "height": "3px",
+      "borderRadius": "2px"
+    },
+    "auroraOrbs": [
+      { "color": "rgba(67,56,202,0.35)", "size": "260px", "position": "top-right" },
+      { "color": "rgba(124,58,237,0.28)", "size": "220px", "position": "bottom-left" },
+      { "color": "rgba(190,24,93,0.18)", "size": "190px", "position": "center" }
+    ]
+  }
+}
